@@ -1,4 +1,5 @@
-from data.data_loader import Data2
+from data.data_loader import Data2, Dataset_Pred
+
 from exp.exp_basic import Exp_Basic
 from models.model import Informer, InformerStack
 
