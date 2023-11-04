@@ -1,4 +1,4 @@
-from data.data_loader import Dataset_ETT_hour, Dataset_ETT_minute, Dataset_Custom, Dataset_Pred
+from data.data_loader import Data2
 from exp.exp_basic import Exp_Basic
 from models.model import Informer, InformerStack
 
@@ -61,11 +61,10 @@ class Exp_Informer(Exp_Basic):
         args = self.args
 
         data_dict = {
-            'data2':Dataset_ETT_hour,
+            'data2':Data2,
         }
         Data = data_dict[self.args.data]
         timeenc = 0 if args.embed!='timeF' else 1
-
         if flag == 'test':
             shuffle_flag = False; drop_last = True; batch_size = args.batch_size; freq=args.freq
         elif flag=='pred':
@@ -82,7 +81,7 @@ class Exp_Informer(Exp_Basic):
             target=args.target,
             inverse=args.inverse,
             timeenc=timeenc,
-            freq=freq,
+            freq='15s',
             cols=args.cols
         )
         print(flag, len(data_set))
