@@ -146,7 +146,7 @@ class Dataset_Pred(Dataset):
         '''
         df_raw.columns: ['date', ...(other features), target feature]
         '''
-        self.cols = list(df_raw.columns); 
+        self.cols = ['cpu']; 
         if self.cols:
             cols=self.cols.copy()
             cols.remove(self.target)
